@@ -1,36 +1,4 @@
-#include "so_long.h"
-
-char **read_map(char *file)
-{
-	char *str;
-	int fd;
-	int i;
-	char **map;
-	int j;
-
-	i = 0;
-	fd = open(file,O_RDONLY);
-	str =get_next_line(fd);
-	while (str != NULL)
-	{
-		free(str);
-		str = get_next_line(fd);
-		i++;
-	}
-	close(fd);
-	map = (char **)ft_calloc(i+1,sizeof(char*));
-	fd = open(file,O_RDONLY);
-	j = 0;
-	while (j < i)
-	{
-		str = get_next_line(fd);
-		map[j] = ft_strtrim(str,"\n");
-		free(str);
-		j++;
-	}
-	close(fd);
-	return (map);
-}
+#include "includes/so_long.h"
 
 void rectangular_map(map_check *check, char **map)
 {
@@ -142,37 +110,32 @@ void closed_map(map_check *check, char **map)
 	}
 }
 
-void free_map(char **map)
-{
-	int i;
-
-	i = 0;
-	while (map[i])
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
-}
-
-void map_error_handling(char **map)
+int map_error_handling(char **map)
 {
 	map_check check;
 	map_check zero;
-	char **copy;
+	char **copy1;
+	char **copy2;
 
+	copy1 = map_copy(map);
+	if (!copy1)
+		return (0);
 	ft_bzero(&zero,sizeof(check));
 	ft_bzero(&check,sizeof(check));
-	rectangular_map(&check, map);
-	stranger_characters(&check, map);
-	minimum_characters(&check, map);
-	closed_map(&check, map);
-	path_no_exit(&check,map);
-	copy = map_copy(map);
-	free_map(map);
+	rectangular_map(&check, copy1);
+	stranger_characters(&check, copy1);
+	minimum_characters(&check, copy1);
+	closed_map(&check, copy1);
+	path_no_exit(&check,copy1);
+	copy2 = map_copy(copy1);
+	if (!copy2)
+		return (0);
+	free_map(copy1);
+	path_with_exit(&check,copy2);
+	free_map(copy2);
 	if(ft_memcmp(&check,&zero,sizeof(check)) != 0)
-		ft_printf("invalid map\n");
-		//error_exit_function()
-	//free(copy);
+		error_exit_function(&check);
+	else
+		ft_printf("Your map is valid\n");
+	return (1);
 }
-

@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:09:49 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/04 19:34:58 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/05 16:26:15 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "libft.h"
 # include <fcntl.h>
-
+# include <mlx.h>
 
 
 
@@ -41,8 +41,16 @@ typedef struct pos
 	int y;
 } pos;
 
+//utils for map
+void free_map(char **map);
 char **read_map(char *file);
-void path_no_exit(map_check *check,char **map);
-void map_error_handling(char **map);
 char **map_copy(char **map);
+void print_map(char **map);
+
+void path_no_exit(map_check *check,char **map);
+int map_error_handling(char **map);
+char **map_copy(char **map);
+void path_with_exit(map_check *check,char **map);
+void error_exit_function(map_check *check);
+void file_name_checker(char *str);
 #endif
