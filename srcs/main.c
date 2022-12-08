@@ -6,17 +6,19 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 11:23:10 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/08 15:46:04 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/08 16:44:26 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	jclose(int keycode, mlx_info *mlx)
+int	jclose(int keycode, all_data *data)
 {
-	(void)keycode;
-	(void)mlx;
-	ft_printf("hello");
+	(void)data;
+	ft_printf("%d",keycode);
+	simple_map_printer(data->mlx.mlx,data->mlx.mlx_win,data->img,data->map);
+	if (keycode == 53)
+		mlx_destroy_window(data->mlx.mlx,data->mlx.mlx_win);
 	return (0);
 }
 
@@ -25,19 +27,26 @@ int	main(int av,char **ac)
 	map_info map;
 	mlx_info mlx;
 	image_info img[5]; 
-	
+	all_data data;
+
 	map=map_checker(av,ac);
 	mlx.mlx = mlx_init();	
 	mlx.mlx_win = mlx_new_window(mlx.mlx,map.resolution.x * SPRITE_X,map.resolution.y * SPRITE_Y ,"so_long");
-	
 	images_generator(img,mlx.mlx);
+	data = (all_data){map,mlx,img};
 
-	simple_map_printer(mlx.mlx,mlx.mlx_win,img,map);
 
-	mlx_hook(mlx.mlx, 0, 0, jclose, &mlx);
-	
+
+	mlx_hook(mlx.mlx_win, 2, 1L<<0, jclose, &data);
+	mlx_hook(mlx.mlx_win, 17, 1L<<0, jclose, &data);
 	mlx_loop(mlx.mlx);
+
+
+
+	free_map(map.map);
 	images_destroyer(img,mlx.mlx);
+	mlx_destroy_window(mlx.mlx,mlx.mlx);
+	free(data.mlx.mlx);
 	return (0);
 }
 

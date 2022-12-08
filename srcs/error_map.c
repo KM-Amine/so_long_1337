@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:43:06 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/08 15:19:50 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/08 17:25:13 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void file_name_checker(char *str)
 		error = -1;
 	if (ft_strnstr(str,".ber",ft_strlen(str)) == 0)
 		error = -1;
-	else if (*(ft_strrchr(str,'r')+1) != '\0')
+	else if (*(ft_strnstr(str,".ber",ft_strlen(str))+4) != '\0')
 	 	error = -1;
-	else if (str[0] == '.')
+	else if (str[0] == *ft_strnstr(str,".ber",ft_strlen(str)))
 		error = -1;
 	if (error == -1)
 	{
@@ -74,7 +74,10 @@ void check_cordonates(char **map,pos *cordonates)
 		ft_printf("map y  is too large\n");
 	}
 	if (i == 1)
+	{
+		free_map(map);
 		exit(EXIT_FAILURE);
+	}
 	else
 		ft_printf("Size screen is valid\n");
 }

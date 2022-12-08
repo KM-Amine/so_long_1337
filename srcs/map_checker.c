@@ -134,7 +134,10 @@ int map_error_handling(char **map)
 	path_with_exit(&check,copy2);
 	free_map(copy2);
 	if(ft_memcmp(&check,&zero,sizeof(check)) != 0)
+	{	
+		free_map(map);
 		error_exit_function(&check);
+	}
 	else
 		ft_printf("Your map is valid\n");
 	return (1);

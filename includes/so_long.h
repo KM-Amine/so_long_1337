@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:09:49 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/08 15:39:33 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/08 16:17:42 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,14 @@ typedef struct mlx_info
 	void *mlx;
 	void *mlx_win;
 } mlx_info;
+
+typedef struct all_data
+{
+	map_info map;
+	mlx_info mlx;
+	image_info *img;
+} all_data;
+
 
 //utils for map
 void free_map(char **map);

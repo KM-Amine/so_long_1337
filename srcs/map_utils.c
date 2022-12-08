@@ -23,17 +23,24 @@ char **read_map(char *file)
 	close(fd);
 	map = (char **)ft_calloc(i+1,sizeof(char*));
 	if (!map)
-		return(0);
+		return(NULL);
 	fd = open(file,O_RDONLY);
 	j = 0;
 	while (j < i)
 	{
 		str = get_next_line(fd);
 		if (!str)
+		{
+			free_map(map);
 			return(0);
+		}
 		map[j] = ft_strtrim(str,"\n");
-		if (!map)
-			return (0);
+		if (!map[j])
+		{
+			free_map(map);
+			free(str);
+			return (NULL);
+		}
 		free(str);
 		j++;
 	}
