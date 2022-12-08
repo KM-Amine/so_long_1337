@@ -8,7 +8,7 @@ CLIENT = client
 SERVER = server
 
 
-SRC = src/$(wildcard *.c)
+SRC = $(wildcard *.c)
 OBJ = $(SRC:%.c=objs/%.o)
 LIBFT = custom_libft/libft.a 
 
