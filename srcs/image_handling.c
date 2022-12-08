@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:30:42 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/08 15:31:07 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/08 19:10:22 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,13 @@ void simple_map_printer(void *mlx,void *mlx_win,image_info *img , map_info map)
 	int i = 0;
 	int j = 0;
 	int index;
+	char *set="01ECP";
 	while (i<map.resolution.y)
 	{
 		j = 0;
 		while (j < map.resolution.x)
 		{
-			if (map.map[i][j] == '0')
-				index = 0;
-			else if (map.map[i][j] == '1')
-				index = 1;
-			else if (map.map[i][j] == 'E')
-				index = 2;
-			else if (map.map[i][j] == 'C')
-				index = 3;
-			else if (map.map[i][j] == 'P')
-				index = 4;
+			index = ft_strchr(set,map.map[i][j])-set;
 			mlx_put_image_to_window(mlx,mlx_win,img[index].ptr,SPRITE_X*j,SPRITE_Y*i);
 			j++;
 		}

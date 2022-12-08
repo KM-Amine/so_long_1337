@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 11:23:10 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/08 16:44:26 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/08 18:52:13 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,22 @@ int	jclose(int keycode, all_data *data)
 	ft_printf("%d",keycode);
 	simple_map_printer(data->mlx.mlx,data->mlx.mlx_win,data->img,data->map);
 	if (keycode == 53)
+	{
 		mlx_destroy_window(data->mlx.mlx,data->mlx.mlx_win);
+		//exit function
+	}
+	return (0);
+}
+
+int	render_frame(all_data *data)
+{
+	static int i;
+
+	//if (i % 30 == 0)
+		simple_map_printer(data->mlx.mlx,data->mlx.mlx_win,data->img,data->map);
+	// else
+	// 	mlx_clear_window(data->mlx.mlx,data->mlx.mlx_win);
+	i++;
 	return (0);
 }
 
@@ -39,9 +54,10 @@ int	main(int av,char **ac)
 
 	mlx_hook(mlx.mlx_win, 2, 1L<<0, jclose, &data);
 	mlx_hook(mlx.mlx_win, 17, 1L<<0, jclose, &data);
+	
+	
+	mlx_loop_hook(mlx.mlx,render_frame,&data);
 	mlx_loop(mlx.mlx);
-
-
 
 	free_map(map.map);
 	images_destroyer(img,mlx.mlx);

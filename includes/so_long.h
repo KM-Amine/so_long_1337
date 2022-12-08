@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:09:49 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/08 16:17:42 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/08 19:49:13 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void images_generator(image_info *img,void *mlx);
 void images_destroyer(image_info *img,void *mlx);
 void simple_map_printer(void *mlx,void *mlx_win,image_info *img , map_info map);
 
-
+void valid_path(map_check *check,char **map,int i);
 void path_no_exit(map_check *check,char **map);
 int map_error_handling(char **map);
 char **map_copy(char **map);

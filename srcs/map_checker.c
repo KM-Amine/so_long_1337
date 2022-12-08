@@ -30,7 +30,7 @@ void stranger_characters(map_check *check, char **map)
 		p.y = ft_strlen(map[p.x])-1;
 		while (p.y>=0)
 		{
-			if(map[p.x][p.y] != '0' && map[p.x][p.y] != '1' && map[p.x][p.y] != 'C' && map[p.x][p.y] != 'E' && map[p.x][p.y] != 'P')
+			if(ft_strchr("01CEP",map[p.x][p.y]) == 0)
 			{
 				check->stranger_characters = -1;
 				break;
@@ -126,12 +126,12 @@ int map_error_handling(char **map)
 	stranger_characters(&check, copy1);
 	minimum_characters(&check, copy1);
 	closed_map(&check, copy1);
-	path_no_exit(&check,copy1);
+	valid_path(&check,copy1,0);
 	copy2 = map_copy(copy1);
 	if (!copy2)
 		return (0);
 	free_map(copy1);
-	path_with_exit(&check,copy2);
+	valid_path(&check,copy2,1);
 	free_map(copy2);
 	if(ft_memcmp(&check,&zero,sizeof(check)) != 0)
 	{	
