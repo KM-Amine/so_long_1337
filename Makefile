@@ -60,7 +60,7 @@ $(NAME): $(OBJ)
 $(LIBFT) : $(LOBJ)
 	$(MAKE) -C custom_libft
 
-objs/%.o: %.c $(HEADER)
+objs/%.o: srcs/%.c $(HEADER)
 	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 custom_libft/%.o: custom_libft/%.c
