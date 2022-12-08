@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 11:23:10 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/08 12:23:17 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/08 12:29:30 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int av,char **ac)
 	void *mlx;
 	void *mlx_win;
 	mlx = mlx_init();
+	
 	mlx_win = mlx_new_window(mlx,map.map_resolution.x * SPRITE_X,map.map_resolution.y * SPRITE_Y ,"so_long");
 	mlx_loop(mlx);
 	
