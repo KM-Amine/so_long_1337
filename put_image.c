@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 12:29:20 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/06 19:26:16 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/08 11:39:24 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,42 +44,42 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
-int	main(void)
-{
-	t_window	data;
-	t_data img;
-	int x = 1;
-	int y = 1;
+// int	main(void)
+// {
+// 	t_window	data;
+// 	t_data img;
+// 	int x = 1;
+// 	int y = 1;
 
-	// if(fork() == 0)
-	// 	system("afplay /Users/mkhellou/Downloads/lifelike-126735.mp3");
-	int i =0;
-	//int j;
-	//char	*addr;
-	data.mlx_ptr = mlx_init();
-	if (data.mlx_ptr == NULL)
-		return (MLX_ERROR);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT,"my window");
-	if (data.win_ptr == NULL)
-	{
-		free(data.win_ptr);
-		return (MLX_ERROR);
-	}
-	//img.img = mlx_new_image(data.mlx_ptr, 1920, 1080);
-	img.img = mlx_xpm_file_to_image(data.mlx_ptr,"image1.xpm",&x,&y);
-	//img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);
-	while (i<10)
-	{
-		mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, img.img, x*i, 0);
-		mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, img.img, 0, y*i);
-		mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, img.img, 9*x, y*i);
-		mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, img.img, x*i, 9*y);
-		i++;
-	}
+// 	// if(fork() == 0)
+// 	// 	system("afplay /Users/mkhellou/Downloads/lifelike-126735.mp3");
+// 	int i =0;
+// 	//int j;
+// 	//char	*addr;
+// 	data.mlx_ptr = mlx_init();
+// 	if (data.mlx_ptr == NULL)
+// 		return (MLX_ERROR);
+// 	data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT,"my window");
+// 	if (data.win_ptr == NULL)
+// 	{
+// 		free(data.win_ptr);
+// 		return (MLX_ERROR);
+// 	}
+// 	//img.img = mlx_new_image(data.mlx_ptr, 1920, 1080);
+// 	img.img = mlx_xpm_file_to_image(data.mlx_ptr,"image1.xpm",&x,&y);
+// 	//img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);
+// 	while (i<10)
+// 	{
+// 		mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, img.img, x*i, 0);
+// 		mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, img.img, 0, y*i);
+// 		mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, img.img, 9*x, y*i);
+// 		mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, img.img, x*i, 9*y);
+// 		i++;
+// 	}
 	
-	mlx_loop(data.mlx_ptr);
-	free(data.mlx_ptr);
-}
+// 	mlx_loop(data.mlx_ptr);
+// 	free(data.mlx_ptr);
+// }
 // #include <mlx.h>
 
 // typedef struct	s_data {

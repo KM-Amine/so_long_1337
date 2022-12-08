@@ -6,25 +6,28 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 11:23:10 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/06 17:25:35 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/08 11:39:22 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/so_long.h"
-// int	main(void)
-// {
-// 	char **map;
 
-// 	//argv maps
-// 	//map too big
-// 	file_name_checker("map.ber");
-// 	map = read_map("map.ber");
-// 	if (!map)
-// 		exit(EXIT_FAILURE);
-// 	if (!map_error_handling(map))
-// 		exit(EXIT_FAILURE);
-// 	return (0);
-// }
+
+int	main(int av,char **ac)
+{
+	map_info map;
+
+	map=map_checker(av,ac);
+
+	
+	void *mlx;
+	void *mlx_win;
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx,map.map_resolution.x * SPRITE_X,map.map_resolution.y * SPRITE_Y ,"so_long");
+	mlx_loop(mlx);
+	
+	return (0);
+}
 
 // int	destr(int keycode, void *vars)
 // {
@@ -107,8 +110,8 @@
 
 // #include <mlx.h>
 
-// #define WINDOW_WIDTH 600
-// #define WINDOW_HEIGHT 300
+// #define WINDOW_WIDTH 2560
+// #define WINDOW_HEIGHT 1440
 
 // #define MLX_ERROR 1
 

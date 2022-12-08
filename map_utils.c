@@ -93,3 +93,16 @@ void print_map(char **map)
 		j++;
 	}
 }
+
+void get_cordonate(char **map,pos *cordonates)
+{
+	int i;
+
+	i = 0;
+	cordonates->y=0;
+	cordonates->x = ft_strlen(map[0]);	
+	while (map[cordonates->y])
+	{
+		cordonates->y++;
+	}
+}
