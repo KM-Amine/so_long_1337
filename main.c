@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 11:23:10 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/08 11:39:22 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/08 11:46:40 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int av,char **ac)
 
 	map=map_checker(av,ac);
 
-	
+
 	void *mlx;
 	void *mlx_win;
 	mlx = mlx_init();
