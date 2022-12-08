@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:43:06 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/08 12:19:21 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/08 15:19:50 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,6 @@ map_info map_checker(int av,char **ac)
 		exit(EXIT_FAILURE);
 	if (!map_error_handling(map.map))
 		exit(EXIT_FAILURE);
-	check_cordonates(map.map,&map.map_resolution);
+	check_cordonates(map.map,&map.resolution);
 	return(map);
 }

@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:09:49 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/08 11:34:30 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/08 15:31:38 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,24 @@ typedef struct pos
 typedef struct map_info
 {
 	char **map;
-	pos map_resolution;
+	pos resolution;
 } map_info;
+
+typedef struct image_info
+{
+	void *ptr;
+	pos	resolution;
+} image_info;
+
+typedef struct map_images
+{
+	image_info F;
+	image_info W;
+	image_info C;
+	image_info E;
+	image_info P;
+} map_images;
+
 
 //utils for map
 void free_map(char **map);
@@ -68,6 +84,10 @@ void get_cordonate(char **map,pos *cordonates);
 
 map_info map_checker(int av,char **ac);
 void check_cordonates(char **map,pos *cordonates);
+
+void images_generator(image_info *img,void *mlx);
+void images_destroyer(image_info *img,void *mlx);
+void simple_map_printer(void *mlx,void *mlx_win,image_info *img , map_info map);
 
 
 void path_no_exit(map_check *check,char **map);

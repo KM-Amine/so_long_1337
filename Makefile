@@ -8,8 +8,8 @@ CLIENT = client
 SERVER = server
 
 
-SRC = $(wildcard *.c)
-OBJ = $(SRC:%.c=objs/%.o)
+SRC = $(wildcard srcs/*.c)
+OBJ = $(SRC:srcs/%.c=objs/%.o)
 LIBFT = custom_libft/libft.a 
 
 LSRC = ft_atoi.c \

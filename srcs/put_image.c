@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 12:29:20 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/08 12:23:54 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/08 13:33:05 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 // 		return (MLX_ERROR);
 // 	}
 // 	//img.img = mlx_new_image(data.mlx_ptr, 1920, 1080);
-// 	img.img = mlx_xpm_file_to_image(data.mlx_ptr,"image1.xpm",&x,&y);
+// 	img.img = mlx_xpm_file_to_image(data.mlx_ptr,"./images/0.xpm",&x,&y);
 // 	//img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,&img.endian);
 // 	while (i<10)
 // 	{
