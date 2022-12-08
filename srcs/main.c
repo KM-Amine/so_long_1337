@@ -6,33 +6,38 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 11:23:10 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/08 15:32:00 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/08 15:46:04 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-
+int	jclose(int keycode, mlx_info *mlx)
+{
+	(void)keycode;
+	(void)mlx;
+	ft_printf("hello");
+	return (0);
+}
 
 int	main(int av,char **ac)
 {
 	map_info map;
+	mlx_info mlx;
 	image_info img[5]; 
 	
-	void *mlx;
-	void *mlx_win;
-	
 	map=map_checker(av,ac);
-	mlx = mlx_init();	
-	mlx_win = mlx_new_window(mlx,map.resolution.x * SPRITE_X,map.resolution.y * SPRITE_Y ,"so_long");
+	mlx.mlx = mlx_init();	
+	mlx.mlx_win = mlx_new_window(mlx.mlx,map.resolution.x * SPRITE_X,map.resolution.y * SPRITE_Y ,"so_long");
 	
-	images_generator(img,mlx);
+	images_generator(img,mlx.mlx);
 
+	simple_map_printer(mlx.mlx,mlx.mlx_win,img,map);
 
-	simple_map_printer(mlx,mlx_win,img,map);
+	mlx_hook(mlx.mlx, 0, 0, jclose, &mlx);
 	
-	mlx_loop(mlx);
-	images_destroyer(img,mlx);
+	mlx_loop(mlx.mlx);
+	images_destroyer(img,mlx.mlx);
 	return (0);
 }
 
