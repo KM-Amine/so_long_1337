@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 11:23:10 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/10 10:15:15 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/10 13:23:41 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	render_frame(all_data *data)
 
 	if (i % 300 == 0)
 		simple_map_printer(data->mlx.mlx,data->mlx.mlx_win,data->img,data->map);
-	else
+	else if (i % 301 == 0)
 	 	mlx_clear_window(data->mlx.mlx,data->mlx.mlx_win);
 	i++;
 	return (0);

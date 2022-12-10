@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_path.c                                       :+:      :+:    :+:   */
+/*   map_check_path.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 16:00:18 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/10 10:55:16 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/10 12:19:40 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,21 @@ int	exit_check(char **map, int i)
 		len = ft_strlen(map[p.x]);
 		while (p.y < len)
 		{
-			if (map[p.x][p.y] == 'E')
-				c.e++;
-			if (map[p.x][p.y] == 'P')
-				c.p++;
-			if (map[p.x][p.y] == 'C')
-				c.c++;
+			if (i == 1)
+			{
+				if (ft_strchr("EPC", map[p.x][p.y]) != 0)
+					return (0);
+			}
+			else if (i == 0)
+			{
+				if (ft_strchr("PC", map[p.x][p.y]) != 0)
+					return (0);
+			}
 			p.y++;
 		}
 		p.x++;
 	}
-	if (i == 1 && c.p == 0 && c.c == 0 && c.e == 0)
-		return (1);
-	else if (i == 0 && c.p == 0 && c.c == 0)
-		return (1);
-	return (0);
+	return (1);
 }
 
 void	valid_path(map_check *check, char **map, int b)

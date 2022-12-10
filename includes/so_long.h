@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:09:49 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/10 10:11:16 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/10 13:31:01 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,10 @@ void get_cordonates(char **map,pos *cordonates,char c);
 
 map_info map_checker(int av,char **ac);
 void check_cordonates(char **map,pos *cordonates);
+void map_structure(map_check *check,char **map);
+void valid_path_handler(map_check *check,char **map);
+
+
 
 void images_generator(image_info *img,void *mlx);
 void images_destroyer(image_info *img,void *mlx);
@@ -98,7 +102,7 @@ void simple_map_printer(void *mlx,void *mlx_win,image_info *img , map_info map);
 
 void valid_path(map_check *check,char **map,int i);
 void path_no_exit(map_check *check,char **map);
-int map_error_handling(char **map);
+void map_error_handling(char **map);
 char **map_copy(char **map);
 void path_with_exit(map_check *check,char **map);
 void error_exit_function(map_check *check);

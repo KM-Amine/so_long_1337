@@ -1,34 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_map.c                                        :+:      :+:    :+:   */
+/*   map_check_error.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:43:06 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/10 11:38:32 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/10 13:37:33 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	error_exit_function(map_check *check)
+map_info	map_checker(int av, char **ac)
 {
-	ft_printf("Error\n");
-	ft_printf("Invalid map :\n");
-	if (check->rectangular == -1)
-		ft_printf("- map is not rectangular\n");
-	if (check->stranger_characters == -1)
-		ft_printf("- map has a stranger character\n");
-	if (check->minimum_characters == -1)
-		ft_printf("- wronge number of coins ,exit and start\n");
-	if (check->closed == -1)
-		ft_printf("- the map is not closed by walls\n");
-	if (check->with_exit == -1)
-		ft_printf("- the exit can't be reached\n");
-	if (check->no_exit == -1)
-		ft_printf("- the coins can't be reached\n");
-	exit(EXIT_FAILURE);
+	map_info	map;
+
+	if (av != 2)
+	{
+		ft_printf("Error\n invalid number of arguments");
+		exit(EXIT_FAILURE);
+	}
+	file_name_checker(ac[1]);
+	ft_printf("Valid file name\n");
+	map.map = read_map(ac[1]);
+	if (!map.map)
+		exit(EXIT_FAILURE);
+	map_error_handling(map.map);
+	check_cordonates(map.map, &map.resolution);
+	return (map);
+}
+
+void	map_error_handling(char **map)
+{
+	map_check	check;
+
+	ft_bzero(&check, sizeof(map_check));
+	map_structure(&check, map);
+	valid_path_handler(&check, map);
+	ft_printf("Your map is valid\n");
 }
 
 void	file_name_checker(char *str)
@@ -57,7 +67,6 @@ void	file_name_checker(char *str)
 			exit(EXIT_FAILURE);
 		}
 	}
-	ft_printf("Valid file name\n");
 	close(fd);
 }
 
@@ -86,21 +95,21 @@ void	check_cordonates(char **map, pos *cordonates)
 		ft_printf("Size screen is valid\n");
 }
 
-map_info	map_checker(int av, char **ac)
+void	error_exit_function(map_check *check)
 {
-	map_info	map;
-
-	if (av != 2)
-	{
-		ft_printf("Error\n invalid number of arguments");
-		exit(EXIT_FAILURE);
-	}
-	file_name_checker(ac[1]);
-	map.map = read_map(ac[1]);
-	if (!map.map)
-		exit(EXIT_FAILURE);
-	if (!map_error_handling(map.map))
-		exit(EXIT_FAILURE);
-	check_cordonates(map.map, &map.resolution);
-	return (map);
+	ft_printf("Error\n");
+	ft_printf("Invalid map :\n");
+	if (check->rectangular == -1)
+		ft_printf("- map is not rectangular\n");
+	if (check->stranger_characters == -1)
+		ft_printf("- map has a stranger character\n");
+	if (check->minimum_characters == -1)
+		ft_printf("- wronge number of coins ,exit and start\n");
+	if (check->closed == -1)
+		ft_printf("- the map is not closed by walls\n");
+	if (check->with_exit == -1)
+		ft_printf("- unvalid path :the exit can't be reached\n");
+	if (check->no_exit == -1)
+		ft_printf("- unvalid path :the coins can't be reached\n");
+	exit(EXIT_FAILURE);
 }

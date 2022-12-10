@@ -110,35 +110,49 @@ void closed_map(map_check *check, char **map)
 	}
 }
 
-int map_error_handling(char **map)
+void map_structure(map_check *check,char **map)
 {
-	map_check check;
 	map_check zero;
+
+	ft_bzero(&zero,sizeof(map_check));
+	rectangular_map(check, map);
+	stranger_characters(check, map);
+	minimum_characters(check, map);
+	closed_map(check, map);
+	if(ft_memcmp(check,&zero,sizeof(map_check)) != 0)
+	{
+		free_map(map);
+		error_exit_function(check);
+	}
+}
+
+void valid_path_handler(map_check *check,char **map)
+{
 	char **copy1;
 	char **copy2;
+	map_check zero;
 
+	ft_bzero(&zero,sizeof(map_check));
 	copy1 = map_copy(map);
 	if (!copy1)
-		return (0);
-	ft_bzero(&zero,sizeof(check));
-	ft_bzero(&check,sizeof(check));
-	rectangular_map(&check, copy1);
-	stranger_characters(&check, copy1);
-	minimum_characters(&check, copy1);
-	closed_map(&check, copy1);
-	valid_path(&check,copy1,0);
+	{
+		free_map(map);
+		exit(EXIT_FAILURE);
+	}
+	valid_path(check,copy1,0);
 	copy2 = map_copy(copy1);
 	if (!copy2)
-		return (0);
+	{
+		free_map(map);
+		free_map(copy1);
+		exit(EXIT_FAILURE);
+	}
 	free_map(copy1);
-	valid_path(&check,copy2,1);
+	valid_path(check,copy2,1);
 	free_map(copy2);
-	if(ft_memcmp(&check,&zero,sizeof(check)) != 0)
+	if(ft_memcmp(check,&zero,sizeof(map_check)) != 0)
 	{	
 		free_map(map);
-		error_exit_function(&check);
+		error_exit_function(check);
 	}
-	else
-		ft_printf("Your map is valid\n");
-	return (1);
 }
