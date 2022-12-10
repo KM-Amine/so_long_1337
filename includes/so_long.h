@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:09:49 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/10 13:31:01 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/10 18:14:20 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,20 @@
 
 // music librrary in /usr/local/include
 // or system("afplay /Users/mkhellou/Downloads/lifelike-126735.mp3");
+
+#define D 2 
+#define S 1 
+#define A 0 
+#define W 13 
+#define ESC 53
+enum {
+	background,
+	wall,
+	collectibales,
+	map_exit,
+	player,
+	go
+};
 
 typedef struct map_check
 {

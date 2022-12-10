@@ -13,6 +13,12 @@
 		"__hash_table": "c",
 		"functional": "c",
 		"type_traits": "c",
-		"sstream": "c"
+		"sstream": "c",
+		"cstdlib": "c",
+		"locale": "c",
+		"cstdio": "c",
+		"cwchar": "c",
+		"memory": "c",
+		"new": "c"
 	}
 }
