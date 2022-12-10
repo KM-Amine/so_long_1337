@@ -126,33 +126,4 @@ void map_structure(map_check *check,char **map)
 	}
 }
 
-void valid_path_handler(map_check *check,char **map)
-{
-	char **copy1;
-	char **copy2;
-	map_check zero;
 
-	ft_bzero(&zero,sizeof(map_check));
-	copy1 = map_copy(map);
-	if (!copy1)
-	{
-		free_map(map);
-		exit(EXIT_FAILURE);
-	}
-	valid_path(check,copy1,0);
-	copy2 = map_copy(copy1);
-	if (!copy2)
-	{
-		free_map(map);
-		free_map(copy1);
-		exit(EXIT_FAILURE);
-	}
-	free_map(copy1);
-	valid_path(check,copy2,1);
-	free_map(copy2);
-	if(ft_memcmp(check,&zero,sizeof(map_check)) != 0)
-	{	
-		free_map(map);
-		error_exit_function(check);
-	}
-}
