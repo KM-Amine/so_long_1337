@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 12:29:20 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/10 14:47:15 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/10 19:00:05 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -339,4 +339,17 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 // 	/* we will exit the loop if there's no window left, and execute this code */
 // 	//mlx_destroy_display(data.mlx_ptr);
 // 	free(data.mlx_ptr);
+// }
+
+// int	jclose(int keycode, all_data *data)
+// {
+// 	(void)data;
+// 	ft_printf("%d",keycode);
+// 	simple_map_printer(data->mlx.mlx,data->mlx.mlx_win,data->img,data->map);
+// 	if (keycode == 53)
+// 	{
+// 		mlx_destroy_window(data->mlx.mlx,data->mlx.mlx_win);
+// 		//exit function
+// 	}
+// 	return (0);
 // }

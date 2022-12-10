@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 14:54:17 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/10 18:29:28 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/10 19:42:33 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,5 @@ int key_press(int keycode, all_data *data)
 	// ft_printf("down");
 	// if (keycode  == A)
 	// ft_printf("right");
-	
 	return(0);
 }
