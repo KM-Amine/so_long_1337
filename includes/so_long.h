@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:09:49 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/08 19:49:13 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/10 10:11:16 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,9 @@ void free_map(char **map);
 char **read_map(char *file);
 char **map_copy(char **map);
 void print_map(char **map);
-void get_cordonate(char **map,pos *cordonates);
+void get_dimentions(char **map,pos *cordonates);
+
+void get_cordonates(char **map,pos *cordonates,char c);
 
 
 map_info map_checker(int av,char **ac);

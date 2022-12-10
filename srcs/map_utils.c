@@ -100,7 +100,7 @@ void print_map(char **map)
 	}
 }
 
-void get_cordonate(char **map,pos *cordonates)
+void get_dimentions(char **map,pos *cordonates)
 {
 	int i;
 
@@ -110,5 +110,26 @@ void get_cordonate(char **map,pos *cordonates)
 	while (map[cordonates->y])
 	{
 		cordonates->y++;
+	}
+}
+
+void get_cordonates(char **map,pos *cordonates,char c)
+{
+	int i;
+	char *ptr;
+
+	i = 0;
+	cordonates->x = -1;
+	cordonates->y = -1;
+	while (map[i])
+	{
+		ptr=ft_strchr(map[i],c);
+		if (ptr != NULL )
+		{
+			cordonates->y = i;
+			cordonates->x = ptr - map[i];
+			break;
+		}
+		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 09:43:06 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/08 19:02:38 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/10 10:28:20 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void check_cordonates(char **map,pos *cordonates)
 	int i;
 
 	i = 0;
-	get_cordonate(map,cordonates);
+	get_dimentions(map,cordonates);
 	if (cordonates->x * SPRITE_X > WINDOW_X)
 	{
 		i = 1;
