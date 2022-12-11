@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:09:49 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/10 19:37:49 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/11 09:44:33 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ typedef struct map_info
 
 typedef struct image_info
 {
-	void *ptr;
+	void *ptr[50];
 	pos	resolution;
 } image_info;
 
@@ -112,7 +112,7 @@ void valid_path_handler(map_check *check,char **map);
 
 void images_generator(image_info *img,void *mlx);
 void images_destroyer(image_info *img,void *mlx);
-void simple_map_printer(void *mlx,void *mlx_win,image_info *img , map_info map);
+void simple_map_printer(void *mlx,void *mlx_win,void **image_set , map_info map);
 
 void valid_path(map_check *check,char **map,int i);
 void path_no_exit(map_check *check,char **map);

@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 11:23:10 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/10 19:44:27 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/11 09:41:44 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,18 @@
 
 int key_press(int keycode, all_data *data);
 
+void image_modifier(image_info *img,void** image_set);
 
 
 int	render_frame(all_data *data)
 {
 	static int i;
-
+	static void *image_set[50];
 	if (i % 300 == 0)
-	simple_map_printer(data->mlx.mlx,data->mlx.mlx_win,data->img,data->map);
+	{
+		image_modifier(data->img,image_set);
+		simple_map_printer(data->mlx.mlx,data->mlx.mlx_win,image_set,data->map);
+	}
 	// else if (i % 301 == 0)
 	//  	mlx_clear_window(data->mlx.mlx,data->mlx.mlx_win);
 	i++;
