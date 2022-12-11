@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 11:23:10 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/11 10:24:53 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/11 10:29:22 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,13 @@ int	main(int av,char **ac)
 {
 	map_info map;
 	mlx_info mlx;
-	image_info img[6]; 
+	image_info *img; 
 	all_data data;
 
 	map=map_checker(av,ac);
 	mlx.mlx = mlx_init();	
 	mlx.mlx_win = mlx_new_window(mlx.mlx,map.resolution.x * SPRITE_X,map.resolution.y * SPRITE_Y ,"so_long");
+	img = (image_info *)ft_calloc(10,sizeof(image_info));
 	images_generator(img,mlx.mlx);
 	data = (all_data){map,mlx,img};
 	// player is on top of coin 
