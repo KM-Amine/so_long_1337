@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 11:23:10 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/11 16:53:41 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/13 08:03:48 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	render_frame(all_data *data)
 {
 	static int i;
 	static void *image_set[50];
-	if (i % 300 == 0)
+	if (i % 1 == 0)
 	{
 		image_modifier(data->img,image_set);
 		simple_map_printer(data->mlx.mlx,data->mlx.mlx_win,image_set,data->map);

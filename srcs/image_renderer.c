@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:30:42 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/11 14:58:59 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/17 09:05:41 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void first_layer(char *set,void **image_set , map_info map,void *mlx,void *mlx_w
 	int index;
 
 	copy = map_copy(map.map);
-	set_map_data(copy,'0',"CP");
+	set_map_data(copy,'0',"CP1EG");
 	i = 0;
 	while (copy[i])
 	{
@@ -48,6 +48,23 @@ void first_layer(char *set,void **image_set , map_info map,void *mlx,void *mlx_w
 		{
 			index = ft_strchr(set,copy[i][j])-set;
 			mlx_put_image_to_window(mlx,mlx_win,image_set[index],SPRITE_X*j,SPRITE_Y*i);
+			j++;
+		}
+		i++;
+	}
+	free_map(copy);
+	copy = map_copy(map.map);
+	i = 0;
+	while (copy[i])
+	{
+		j = 0;
+		while (copy[i][j])
+		{
+			if (ft_strchr("1EG",copy[i][j]))
+			{
+				index = ft_strchr(set,copy[i][j])-set;
+				mlx_put_image_to_window(mlx,mlx_win,image_set[index],SPRITE_X*j,SPRITE_Y*i);
+			}
 			j++;
 		}
 		i++;

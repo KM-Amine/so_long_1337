@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 09:55:06 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/11 16:35:47 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/17 09:44:26 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void images_generator(image_info *img,void *mlx)
 	char *path;
 
 	i = 0;
-	while (i<10)
+	while (i<20)
 	{
 		j = 0;
 		while (j<10)
@@ -96,7 +96,7 @@ void image_modifier(image_info *img,void** image_set)
 	i = 0;
 	while (i < 6)
 	{
-		image_animation(i,2,img,image_set,clock);
+		image_animation(i,4,img,image_set,clock);
 		i++;
 	}
 	clock++;
