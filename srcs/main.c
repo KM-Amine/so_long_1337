@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 11:23:10 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/17 10:25:14 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/17 10:44:03 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@ void image_modifier(image_info *img,void** image_set);
 int	render_frame(all_data *data)
 {
 	static int i;
-	static void *image_set[50];
+	(void)data;
+	//static void *image_set[50];
 	if (i % 1 == 0)
 	{
-		map_modifier(data);
-		image_modifier(data->img,image_set);
-		simple_map_printer(data->mlx.mlx,data->mlx.mlx_win,image_set,data->map);
+		//map_modifier(data);
+		//image_modifier(data->img,image_set);
+		//simple_map_printer(data->mlx.mlx,data->mlx.mlx_win,image_set,data->map);
 	}
 	// else if (i % 301 == 0)
 	//  	mlx_clear_window(data->mlx.mlx,data->mlx.mlx_win);
@@ -51,6 +52,7 @@ int	main(int av,char **ac)
 	img = (image_info*)ft_calloc(10,sizeof(image_info));
 	images_generator(img,mlx.mlx);
 	data = calloc(1,sizeof(all_data));
+	data->map = map;
 	// player is on top of coin 
 
 

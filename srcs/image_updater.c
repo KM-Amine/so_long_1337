@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 14:54:17 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/17 10:21:37 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/17 10:44:41 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int key_press(int keycode, all_data *data)
 	{
 		data->keys[4][0]=1;
 	}
+	ft_printf("%d %d\n",data->keys[0][0],data->keys[0][1]);
 	return (0);
 }
 
@@ -100,6 +101,7 @@ int key_release(int keycode,all_data *data)
 		data->keys[3][0]=0;
 		data->keys[3][1]=1;
 	}
+	ft_printf("%d %d\n",data->keys[0][0],data->keys[0][1]);
 	return (0);
 }
 
@@ -127,10 +129,10 @@ void set_exit(char **map)
 // 		}
 // 	}
 // }
-void map_modifier(all_data *data)
-{
-	ft_printf("%d %d",data->keys[0][0],data->keys[0][1]);
-}
+// void map_modifier(all_data *data)
+// {
+// 	ft_printf("%d %d",data->keys[0][0],data->keys[0][1]);
+// }
 // int key_press(int keycode, all_data *data)
 // {
 	
