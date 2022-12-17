@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 14:54:17 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/11 15:01:31 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/17 10:21:37 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,62 @@ void player_mouver(char **map,pos p,int x,int y)
 		map[p.y+y][p.x+x] = 'P';
 	}
 }
-void user_input(char **map,int keycode)
+int key_press(int keycode, all_data *data)
 {
 	pos p;
-	get_cordonates(map,&p,'P');
+	get_cordonates(data->map.map,&p,'P');
 	if (keycode  == D)
-		player_mouver(map,p,1,0);
+	{
+		data->keys[0][0]=1;
+		data->keys[0][1]=0;
+	}
 	else if (keycode  == A)
-		player_mouver(map,p,-1,0);
+	{
+		data->keys[1][0]=1;
+		data->keys[1][1]=0;
+	}
 	else if (keycode  == S)
-		player_mouver(map,p,0,1);
+		{
+		data->keys[2][0]=1;
+		data->keys[2][1]=0;
+	}
 	else if (keycode  == W)
-		player_mouver(map,p,0,-1);
+	{
+		data->keys[3][0]=1;
+		data->keys[3][1]=0;
+	}
 	else if (keycode  == ESC)
-		exit(0);
+	{
+		data->keys[4][0]=1;
+	}
+	return (0);
+}
+
+int key_release(int keycode,all_data *data)
+{
+	pos p;
+	get_cordonates(data->map.map,&p,'P');
+	if (keycode  == D)
+	{
+		data->keys[0][0]=0;
+		data->keys[0][1]=1;
+	}
+	else if (keycode  == A)
+	{
+		data->keys[1][0]=0;
+		data->keys[1][1]=1;
+	}
+	else if (keycode  == S)
+		{
+		data->keys[2][0]=0;
+		data->keys[2][1]=1;
+	}
+	else if (keycode  == W)
+	{
+		data->keys[3][0]=0;
+		data->keys[3][1]=1;
+	}
+	return (0);
 }
 
 void set_exit(char **map)
@@ -70,31 +112,29 @@ void set_exit(char **map)
 	map[p.x][p.y] = 'G';
 }
 
-void input_map_updater(all_data *data,int keycode)
+// void input_map_updater(all_data *data,int keycode)
+// {
+// 	char **map;
+// 	map = data->map.map;
+// 	//user_input(map,keycode);
+// 	if (elment_counter(map,'C') == 0)
+// 	{
+// 		set_exit(map);
+// 		if (elment_counter(map,'G') == 0)
+// 		{
+// 			ft_printf("You won");
+// 			exit(0);
+// 		}
+// 	}
+// }
+void map_modifier(all_data *data)
 {
-	char **map;
-	map = data->map.map;
-	user_input(map,keycode);
-	if (elment_counter(map,'C') == 0)
-	{
-		set_exit(map);
-		if (elment_counter(map,'G') == 0)
-		{
-			ft_printf("You won");
-			exit(0);
-		}
-	}
+	ft_printf("%d %d",data->keys[0][0],data->keys[0][1]);
 }
+// int key_press(int keycode, all_data *data)
+// {
+	
+// 	input_map_updater(data,keycode);
 
-int key_press(int keycode, all_data *data)
-{
-	input_map_updater(data,keycode);
-	// ft_printf("left");
-	// if (keycode  == W)
-	// ft_printf("up");
-	// if (keycode  == S)
-	// ft_printf("down");
-	// if (keycode  == A)
-	// ft_printf("right");
-	return(0);
-}
+// 	return(0);
+// }

@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:09:49 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/11 11:01:26 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/17 10:21:42 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct all_data
 	map_info map;
 	mlx_info mlx;
 	image_info *img;
+	int keys[5][2];
 } all_data;
 
 
@@ -121,4 +122,9 @@ char **map_copy(char **map);
 void path_with_exit(map_check *check,char **map);
 void error_exit_function(map_check *check);
 void file_name_checker(char *str);
+int key_press(int keycode,all_data *data);
+int key_release(int keycode,all_data *data);
+void map_modifier(all_data *data);
+
+
 #endif
