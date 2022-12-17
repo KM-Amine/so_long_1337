@@ -6,45 +6,45 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 14:54:17 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/17 10:44:41 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/17 11:01:58 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int elment_counter(char **map,char c)
-{
-	int i;
-	int j;
-	int counter;
+// int elment_counter(char **map,char c)
+// {
+// 	int i;
+// 	int j;
+// 	int counter;
 
-	counter = 0;
-	i = 0;
-	while (map[i])
-	{
-		j = 0;
-		while(map[i][j])
-		{
-			if (map[i][j] == c)
-				counter++;
-			j++;
-		}
-	i++;
-	}
-	return (counter);
-}
+// 	counter = 0;
+// 	i = 0;
+// 	while (map[i])
+// 	{
+// 		j = 0;
+// 		while(map[i][j])
+// 		{
+// 			if (map[i][j] == c)
+// 				counter++;
+// 			j++;
+// 		}
+// 	i++;
+// 	}
+// 	return (counter);
+// }
 
-void player_mouver(char **map,pos p,int x,int y)
-{
-	static int i;
-	if (map[p.y+y][p.x+x] != '1' && map[p.y+y][p.x+x] != 'E')
-	{
-		i++;
-		ft_printf("Player mouved : %d times\n",i);
-		map[p.y][p.x] = '0';
-		map[p.y+y][p.x+x] = 'P';
-	}
-}
+// void player_mouver(char **map,pos p,int x,int y)
+// {
+// 	static int i;
+// 	if (map[p.y+y][p.x+x] != '1' && map[p.y+y][p.x+x] != 'E')
+// 	{
+// 		i++;
+// 		ft_printf("Player mouved : %d times\n",i);
+// 		map[p.y][p.x] = '0';
+// 		map[p.y+y][p.x+x] = 'P';
+// 	}
+// }
 int key_press(int keycode, all_data *data)
 {
 	pos p;
@@ -92,7 +92,7 @@ int key_release(int keycode,all_data *data)
 		data->keys[1][1]=1;
 	}
 	else if (keycode  == S)
-		{
+	{
 		data->keys[2][0]=0;
 		data->keys[2][1]=1;
 	}
