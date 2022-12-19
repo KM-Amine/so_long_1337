@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:09:49 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/17 10:21:42 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/17 16:27:16 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,18 @@ enum {
 	collectibales,
 	map_exit,
 	player,
-	go
+	go,
+	patrol
+};
+enum {
+	right,
+	up,
+	down,
+	left
+};
+enum {
+	press,
+	release
 };
 
 typedef struct map_check
@@ -85,12 +96,23 @@ typedef struct mlx_info
 	void *mlx_win;
 } mlx_info;
 
+typedef struct key
+{
+	int status[2];
+} key;
+typedef struct enemy
+{
+	int direction;
+	pos p;
+} enemy;
+
 typedef struct all_data
 {
 	map_info map;
 	mlx_info mlx;
 	image_info *img;
-	int keys[5][2];
+	key *keys;
+	enemy *enemy;
 } all_data;
 
 
@@ -109,6 +131,8 @@ void check_cordonates(char **map,pos *cordonates);
 void map_structure(map_check *check,char **map);
 void valid_path_handler(map_check *check,char **map);
 
+int key_release(int keycode,all_data *data);
+int key_press(int keycode, all_data *data);
 
 
 void images_generator(image_info *img,void *mlx);
@@ -122,9 +146,13 @@ char **map_copy(char **map);
 void path_with_exit(map_check *check,char **map);
 void error_exit_function(map_check *check);
 void file_name_checker(char *str);
-int key_press(int keycode,all_data *data);
-int key_release(int keycode,all_data *data);
-void map_modifier(all_data *data);
 
+void map_modifier(all_data *data,int clock);
+int elment_counter(char **map,char c);
+void	enemy_spawner(char **map);
+void enemy_modifier(all_data *data,int clock,int frame_rate);
+
+void enemy_collector(all_data *data);
+void enemy_direction(char **map, all_data *data);
 
 #endif

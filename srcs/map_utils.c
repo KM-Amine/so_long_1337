@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 19:39:12 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/10 19:41:08 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/17 12:31:37 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,4 +144,26 @@ void get_cordonates(char **map,pos *cordonates,char c)
 		}
 		i++;
 	}
+}
+
+int elment_counter(char **map,char c)
+{
+	int i;
+	int j;
+	int counter;
+
+	counter = 0;
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while(map[i][j])
+		{
+			if (map[i][j] == c)
+				counter++;
+			j++;
+		}
+	i++;
+	}
+	return (counter);
 }

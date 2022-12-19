@@ -6,7 +6,7 @@
 /*   By: mkhellou < mkhellou@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 09:55:06 by mkhellou          #+#    #+#             */
-/*   Updated: 2022/12/17 11:16:29 by mkhellou         ###   ########.fr       */
+/*   Updated: 2022/12/17 13:14:54 by mkhellou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,12 @@ void images_generator(image_info *img,void *mlx)
 		}
 		i++;
 	}
+	
+	// img[background].ptr[0]=mlx_xpm_file_to_image(mlx,"./images/-0.xpm",&img[0].resolution.x,&img[0].resolution.y);
+	// img[wall].ptr[0]=mlx_xpm_file_to_image(mlx,"./images/-1.xpm",&img[2].resolution.x,&img[2].resolution.y);
+	// img[collectibales].ptr[0]=mlx_xpm_file_to_image(mlx,"./images/-2.xpm",&img[4].resolution.x,&img[4].resolution.y);
+	// img[map_exit].ptr[0]=mlx_xpm_file_to_image(mlx,"./images/-3.xpm",&img[3].resolution.x,&img[3].resolution.y);
+	// img[go].ptr[0]=mlx_xpm_file_to_image(mlx,"./images/-4.xpm",&img[5].resolution.x,&img[5].resolution.y);
 }
 void images_destroyer(image_info *img,void *mlx)
 {
@@ -68,7 +74,7 @@ void images_destroyer(image_info *img,void *mlx)
 
 void image_animation(int element,int frame_rate,image_info *img,void** image_set,int clock)
 {
-	static int count[6];
+	static int count[7];
 	
 	if (clock % frame_rate == 0)
 	{
@@ -88,7 +94,7 @@ void image_modifier(image_info *img,void** image_set)
 	int i;
 	
 	i = 0;
-	while (i < 6)
+	while (i < 7)
 	{
 		image_animation(i,4,img,image_set,clock);
 		i++;
